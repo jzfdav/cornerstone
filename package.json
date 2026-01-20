@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "biome check src/",
+    "type-check": "tsc -b",
+    "lint": "biome lint src/",
     "format": "biome format --write src/",
     "check": "biome check --write src/",
+    "check:all": "pnpm type-check && pnpm check",
+    "build": "pnpm check:all && vite build",
     "preview": "vite preview",
     "prepare": "husky"
   },
