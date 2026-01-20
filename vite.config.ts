@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/cornerstone/',
+  base: process.env.NODE_ENV === 'production' ? '/cornerstone/' : '/',
   server: {
     port: 5174,
   },

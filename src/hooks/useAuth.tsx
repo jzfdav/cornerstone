@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useState } from 'react'
+import {
+  createContext,
+  type ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { validateDemoLoginCode, validateDemoProjectCode } from '../lib/demoAuth'
 import { type Project, supabase, type User } from '../lib/supabase'
 
@@ -20,7 +27,23 @@ interface AuthState {
   project: Project | null
 }
 
-export function useAuth() {
+interface AuthContextType extends AuthState {
+  getSavedProjectCode: () => string
+  login: (
+    projectCode: string,
+    accessCode: string,
+    rememberMe: boolean,
+  ) => Promise<{
+    success: boolean
+    projectError?: boolean
+    accessError?: boolean
+  }>
+  logout: () => void
+}
+
+const AuthContext = createContext<AuthContextType | null>(null)
+
+export function AuthProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<AuthState>({
     isAuthenticated: false,
     isLoading: true,
@@ -87,11 +110,7 @@ export function useAuth() {
         return { valid: false }
       }
 
-      if (!supabase) {
-        return { valid: false }
-      }
-
-      const { data, error } = await supabase
+      const { data, error } = await supabase!
         .from('projects')
         .select('*')
         .eq('code', normalized)
@@ -122,11 +141,7 @@ export function useAuth() {
         return { valid: false }
       }
 
-      if (!supabase) {
-        return { valid: false }
-      }
-
-      const { data, error } = await supabase
+      const { data, error } = await supabase!
         .from('users')
         .select('*')
         .eq('project_id', projectId)
@@ -155,6 +170,7 @@ export function useAuth() {
     }> => {
       // Validate project code
       const projectResult = await validateProjectCode(projectCode)
+
       if (!projectResult.valid || !projectResult.project) {
         return { success: false, projectError: true }
       }
@@ -204,7 +220,6 @@ export function useAuth() {
   const logout = useCallback(() => {
     localStorage.removeItem(STORAGE_KEYS.SESSION)
     localStorage.removeItem(STORAGE_KEYS.SESSION_EXPIRY)
-    // Keep project code for convenience
 
     setState({
       isAuthenticated: false,
@@ -214,10 +229,24 @@ export function useAuth() {
     })
   }, [])
 
-  return {
-    ...state,
-    getSavedProjectCode,
-    login,
-    logout,
+  return (
+    <AuthContext.Provider
+      value={{
+        ...state,
+        getSavedProjectCode,
+        login,
+        logout,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  )
+}
+
+export function useAuth() {
+  const context = useContext(AuthContext)
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider')
   }
+  return context
 }
