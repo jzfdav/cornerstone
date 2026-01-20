@@ -6,12 +6,12 @@ import App from './App'
 import './index.css'
 
 const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            staleTime: 60 * 1000, // 1 minute
-            refetchOnWindowFocus: false,
-        },
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000, // 1 minute
+      refetchOnWindowFocus: false,
     },
+  },
 })
 
 // Use basename for GitHub Pages deployment
@@ -21,11 +21,11 @@ const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('Root element not found')
 
 ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
-        <QueryClientProvider client={queryClient}>
-            <BrowserRouter basename={basename}>
-                <App />
-            </BrowserRouter>
-        </QueryClientProvider>
-    </React.StrictMode>,
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter basename={basename}>
+        <App />
+      </BrowserRouter>
+    </QueryClientProvider>
+  </React.StrictMode>,
 )
