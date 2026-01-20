@@ -1,0 +1,434 @@
+/* Material Design 3 Expressive - Cornerstone Design System */
+
+/* Google Fonts Import - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Google+Sans+Text:wght@400;500&display=swap');
+
+/* ============================================
+   M3 Design Tokens - Reference & System Level
+   ============================================ */
+:root {
+  /* === Primary Tonal Palette (Blue) === */
+  --md-ref-palette-primary0: #000000;
+  --md-ref-palette-primary10: #001D36;
+  --md-ref-palette-primary20: #003258;
+  --md-ref-palette-primary30: #00497D;
+  --md-ref-palette-primary40: #0061A4;
+  --md-ref-palette-primary50: #2B7BC9;
+  --md-ref-palette-primary60: #4C95E4;
+  --md-ref-palette-primary70: #78B1FF;
+  --md-ref-palette-primary80: #A6C8FF;
+  --md-ref-palette-primary90: #D3E4FF;
+  --md-ref-palette-primary95: #EAF1FF;
+  --md-ref-palette-primary100: #FFFFFF;
+
+  /* === Neutral Tonal Palette === */
+  --md-ref-palette-neutral0: #000000;
+  --md-ref-palette-neutral10: #1A1C1E;
+  --md-ref-palette-neutral20: #2F3033;
+  --md-ref-palette-neutral30: #46474A;
+  --md-ref-palette-neutral40: #5E5E62;
+  --md-ref-palette-neutral50: #76777A;
+  --md-ref-palette-neutral60: #909094;
+  --md-ref-palette-neutral80: #C7C6CA;
+  --md-ref-palette-neutral90: #E3E2E6;
+  --md-ref-palette-neutral95: #F1F0F4;
+  --md-ref-palette-neutral99: #FDFBFF;
+  --md-ref-palette-neutral100: #FFFFFF;
+
+  /* === System Color Tokens (Dark Theme) === */
+  --md-sys-color-primary: var(--md-ref-palette-primary80);
+  --md-sys-color-on-primary: var(--md-ref-palette-primary20);
+  --md-sys-color-primary-container: var(--md-ref-palette-primary30);
+  --md-sys-color-on-primary-container: var(--md-ref-palette-primary90);
+
+  --md-sys-color-surface: var(--md-ref-palette-neutral10);
+  --md-sys-color-surface-dim: #111318;
+  --md-sys-color-surface-bright: #393A3D;
+  --md-sys-color-surface-container-lowest: #0E1012;
+  --md-sys-color-surface-container-low: var(--md-ref-palette-neutral10);
+  --md-sys-color-surface-container: #1E2022;
+  --md-sys-color-surface-container-high: #282A2D;
+  --md-sys-color-surface-container-highest: #333538;
+
+  --md-sys-color-on-surface: var(--md-ref-palette-neutral90);
+  --md-sys-color-on-surface-variant: var(--md-ref-palette-neutral80);
+  --md-sys-color-outline: var(--md-ref-palette-neutral60);
+  --md-sys-color-outline-variant: var(--md-ref-palette-neutral30);
+
+  --md-sys-color-error: #FFB4AB;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000A;
+  --md-sys-color-on-error-container: #FFDAD6;
+
+  /* === Typography === */
+  --md-sys-typescale-display-font: 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --md-sys-typescale-body-font: 'Google Sans Text', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Display - Large expressive headlines */
+  --md-sys-typescale-display-large-size: 3.5rem;
+  --md-sys-typescale-display-large-weight: 400;
+  --md-sys-typescale-display-large-tracking: -0.02em;
+
+  --md-sys-typescale-display-medium-size: 2.75rem;
+  --md-sys-typescale-display-medium-weight: 400;
+
+  /* Headline */
+  --md-sys-typescale-headline-large-size: 2rem;
+  --md-sys-typescale-headline-large-weight: 500;
+
+  --md-sys-typescale-headline-medium-size: 1.75rem;
+  --md-sys-typescale-headline-medium-weight: 500;
+
+  /* Title */
+  --md-sys-typescale-title-large-size: 1.375rem;
+  --md-sys-typescale-title-large-weight: 500;
+
+  --md-sys-typescale-title-medium-size: 1rem;
+  --md-sys-typescale-title-medium-weight: 600;
+
+  /* Body */
+  --md-sys-typescale-body-large-size: 1rem;
+  --md-sys-typescale-body-large-weight: 400;
+  --md-sys-typescale-body-large-tracking: 0.03em;
+
+  --md-sys-typescale-body-medium-size: 0.875rem;
+  --md-sys-typescale-body-medium-weight: 400;
+
+  /* Label */
+  --md-sys-typescale-label-large-size: 0.875rem;
+  --md-sys-typescale-label-large-weight: 600;
+  --md-sys-typescale-label-large-tracking: 0.02em;
+
+  --md-sys-typescale-label-medium-size: 0.75rem;
+  --md-sys-typescale-label-medium-weight: 600;
+
+  /* === Shape - Expressive rounded corners === */
+  --md-sys-shape-corner-none: 0;
+  --md-sys-shape-corner-extra-small: 0.25rem;
+  --md-sys-shape-corner-small: 0.5rem;
+  --md-sys-shape-corner-medium: 0.75rem;
+  --md-sys-shape-corner-large: 1rem;
+  --md-sys-shape-corner-extra-large: 1.75rem;
+  --md-sys-shape-corner-full: 9999px;
+
+  /* === Elevation (using shadow) === */
+  --md-sys-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-2: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
+
+  /* === Motion - Expressive easing === */
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  --md-sys-motion-duration-short1: 50ms;
+  --md-sys-motion-duration-short2: 100ms;
+  --md-sys-motion-duration-short3: 150ms;
+  --md-sys-motion-duration-short4: 200ms;
+  --md-sys-motion-duration-medium1: 250ms;
+  --md-sys-motion-duration-medium2: 300ms;
+  --md-sys-motion-duration-medium3: 350ms;
+  --md-sys-motion-duration-medium4: 400ms;
+  --md-sys-motion-duration-long1: 450ms;
+  --md-sys-motion-duration-long2: 500ms;
+
+  /* === Spacing === */
+  --md-sys-spacing-xs: 0.25rem;
+  --md-sys-spacing-sm: 0.5rem;
+  --md-sys-spacing-md: 1rem;
+  --md-sys-spacing-lg: 1.5rem;
+  --md-sys-spacing-xl: 2rem;
+  --md-sys-spacing-2xl: 3rem;
+}
+
+/* ============================================
+   CSS Reset & Base Styles
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--md-sys-typescale-body-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: var(--md-sys-typescale-body-large-weight);
+  letter-spacing: var(--md-sys-typescale-body-large-tracking);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  min-height: 100dvh;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+   Typography Classes
+   ============================================ */
+.display-large {
+  font-family: var(--md-sys-typescale-display-font);
+  font-size: var(--md-sys-typescale-display-large-size);
+  font-weight: var(--md-sys-typescale-display-large-weight);
+  letter-spacing: var(--md-sys-typescale-display-large-tracking);
+  line-height: 1.1;
+}
+
+.display-medium {
+  font-family: var(--md-sys-typescale-display-font);
+  font-size: var(--md-sys-typescale-display-medium-size);
+  font-weight: var(--md-sys-typescale-display-medium-weight);
+  line-height: 1.15;
+}
+
+.headline-large {
+  font-family: var(--md-sys-typescale-display-font);
+  font-size: var(--md-sys-typescale-headline-large-size);
+  font-weight: var(--md-sys-typescale-headline-large-weight);
+  line-height: 1.2;
+}
+
+.headline-medium {
+  font-family: var(--md-sys-typescale-display-font);
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  font-weight: var(--md-sys-typescale-headline-medium-weight);
+  line-height: 1.25;
+}
+
+.title-large {
+  font-family: var(--md-sys-typescale-display-font);
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: 1.3;
+}
+
+.title-medium {
+  font-family: var(--md-sys-typescale-body-font);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+  line-height: 1.4;
+}
+
+.body-large {
+  font-family: var(--md-sys-typescale-body-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: var(--md-sys-typescale-body-large-weight);
+  line-height: 1.5;
+}
+
+.body-medium {
+  font-family: var(--md-sys-typescale-body-font);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: var(--md-sys-typescale-body-medium-weight);
+  line-height: 1.5;
+}
+
+.label-large {
+  font-family: var(--md-sys-typescale-body-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  line-height: 1.4;
+}
+
+.label-medium {
+  font-family: var(--md-sys-typescale-body-font);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  line-height: 1.3;
+}
+
+/* ============================================
+   M3 Form Elements
+   ============================================ */
+input,
+button {
+  font-family: inherit;
+  font-size: var(--md-sys-typescale-body-large-size);
+}
+
+/* M3 Filled Text Field */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: var(--md-sys-spacing-md);
+  padding-top: 1.5rem;
+  background-color: var(--md-sys-color-surface-container-highest);
+  border: none;
+  border-bottom: 2px solid var(--md-sys-color-on-surface-variant);
+  border-radius: var(--md-sys-shape-corner-extra-small) var(--md-sys-shape-corner-extra-small) 0 0;
+  color: var(--md-sys-color-on-surface);
+  transition:
+    border-color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard),
+    background-color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+  background-color: var(--md-sys-color-surface-container-highest);
+  border-bottom-color: var(--md-sys-color-on-surface);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-bottom: 3px solid var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+input::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* ============================================
+   M3 Buttons
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--md-sys-spacing-sm);
+  padding: var(--md-sys-spacing-md) var(--md-sys-spacing-lg);
+  font-family: var(--md-sys-typescale-body-font);
+  font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  border-radius: var(--md-sys-shape-corner-full);
+  border: none;
+  cursor: pointer;
+  transition:
+    transform var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-emphasized),
+    box-shadow var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-emphasized),
+    background-color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+/* M3 Filled Button (Primary) */
+.btn-primary {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.btn-primary:hover:not(:disabled) {
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Ripple-like focus state */
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--md-sys-color-primary-container);
+}
+
+/* ============================================
+   M3 Checkbox
+   ============================================ */
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-sm);
+  cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--md-sys-color-primary);
+  cursor: pointer;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+}
+
+.checkbox-wrapper label {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ============================================
+   State Layer (M3 interaction feedback)
+   ============================================ */
+.state-layer {
+  position: relative;
+}
+
+.state-layer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: currentColor;
+  opacity: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+}
+
+.state-layer:hover::before {
+  opacity: 0.08;
+}
+
+.state-layer:focus-visible::before {
+  opacity: 0.12;
+}
+
+.state-layer:active::before {
+  opacity: 0.12;
+}
+
+/* ============================================
+   Error Styling
+   ============================================ */
+.error-text {
+  color: var(--md-sys-color-error);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  margin-top: var(--md-sys-spacing-xs);
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+.text-center {
+  text-align: center;
+}
+
+.text-on-surface {
+  color: var(--md-sys-color-on-surface);
+}
+
+.text-on-surface-variant {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.surface-container {
+  background-color: var(--md-sys-color-surface-container);
+}
+
+.surface-container-high {
+  background-color: var(--md-sys-color-surface-container-high);
+}

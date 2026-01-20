@@ -1,0 +1,179 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+/* Top Half - Branding */
+.login-branding {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--md-sys-spacing-xl);
+    background: linear-gradient(180deg,
+            var(--md-sys-color-surface-container) 0%,
+            var(--md-sys-color-surface) 100%);
+}
+
+/* Logo Animation - Subtle float */
+.login-logo {
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.login-title {
+    font-family: var(--md-sys-typescale-display-font);
+    font-size: var(--md-sys-typescale-display-medium-size);
+    font-weight: 400;
+    margin-top: var(--md-sys-spacing-lg);
+    background: linear-gradient(135deg, var(--md-sys-color-on-surface) 0%, var(--md-sys-color-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-subtitle {
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: var(--md-sys-typescale-body-medium-size);
+    margin-top: var(--md-sys-spacing-sm);
+    text-align: center;
+}
+
+/* Bottom Half - Form */
+.login-form-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--md-sys-spacing-xl);
+    padding-top: var(--md-sys-spacing-2xl);
+    background-color: var(--md-sys-color-surface);
+}
+
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--md-sys-spacing-lg);
+}
+
+/* M3 Floating Label Input */
+.form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    position: absolute;
+    left: var(--md-sys-spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--md-sys-typescale-body-large-size);
+    color: var(--md-sys-color-on-surface-variant);
+    pointer-events: none;
+    transition:
+        transform var(--md-sys-motion-duration-medium1) var(--md-sys-motion-easing-emphasized),
+        font-size var(--md-sys-motion-duration-medium1) var(--md-sys-motion-easing-emphasized),
+        top var(--md-sys-motion-duration-medium1) var(--md-sys-motion-easing-emphasized);
+}
+
+.form-group input:focus+label,
+.form-group input:not(:placeholder-shown)+label {
+    top: 0.5rem;
+    transform: translateY(0);
+    font-size: var(--md-sys-typescale-label-medium-size);
+    color: var(--md-sys-color-primary);
+}
+
+.form-group input {
+    padding-top: 1.5rem;
+}
+
+.form-group input::placeholder {
+    color: transparent;
+}
+
+.form-group input:focus::placeholder {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Loading Spinner */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid transparent;
+    border-top-color: var(--md-sys-color-on-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Bible Verse Footer */
+.login-footer {
+    padding: var(--md-sys-spacing-md);
+    text-align: center;
+    background-color: var(--md-sys-color-surface);
+}
+
+.bible-verse {
+    font-family: var(--md-sys-typescale-body-font);
+    font-size: var(--md-sys-typescale-body-medium-size);
+    font-style: italic;
+    color: var(--md-sys-color-on-surface-variant);
+    opacity: 0.7;
+}
+
+/* Desktop adjustments */
+@media (min-width: 768px) {
+    .login-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .login-branding {
+        flex: 1;
+        min-height: 100dvh;
+        background: linear-gradient(135deg,
+                var(--md-sys-color-surface-container) 0%,
+                var(--md-sys-color-surface) 100%);
+    }
+
+    .login-form-section {
+        flex: 1;
+        justify-content: center;
+        padding-top: var(--md-sys-spacing-xl);
+    }
+
+    .login-footer {
+        width: 100%;
+        flex-basis: 100%;
+    }
+}
