@@ -1,0 +1,10 @@
+#!/bin/sh
+# Pre-commit hook: lint and build check
+
+echo "🔍 Running biome check..."
+pnpm exec biome check --write src/
+
+echo "🔨 Running build check..."
+pnpm run build
+
+echo "✅ Pre-commit checks passed!"
