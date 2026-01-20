@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Logo } from '../components/Logo'
 import { useAuth } from '../hooks/useAuth'
-import './Login.css'
+import './LoginPage.css'
 
 export default function Login() {
   const { getSavedProjectCode, login } = useAuth()

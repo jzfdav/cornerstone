@@ -1,6 +1,6 @@
 import { Logo } from '../components/Logo'
 import { useAuth } from '../hooks/useAuth'
-import './Dashboard.css'
+import './DashboardPage.css'
 
 export default function Dashboard() {
   const { user, project, logout } = useAuth()

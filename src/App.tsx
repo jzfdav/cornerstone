@@ -2,8 +2,8 @@ import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuth } from './hooks/useAuth'
 
-const Dashboard = lazy(() => import('./pages/Dashboard'))
-const Login = lazy(() => import('./pages/Login'))
+const Dashboard = lazy(() => import('./pages/DashboardPage'))
+const Login = lazy(() => import('./pages/LoginPage'))
 
 function LoadingScreen() {
   return (
